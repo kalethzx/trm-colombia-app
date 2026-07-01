@@ -1,6 +1,7 @@
 
 import re
 from datetime import datetime, date
+from io import StringIO
 from zoneinfo import ZoneInfo
 
 import holidays
@@ -383,7 +384,7 @@ def preparar_base_modelo(df_trm_permitida, df_dolar_global, df_petroleo):
 
 @st.cache_resource(show_spinner=False)
 def entrenar_modelo(df_modelo_csv, columnas_modelo):
-    df_modelo = pd.read_json(df_modelo_csv, orient="split")
+    df_modelo = pd.read_json(StringIO(df_modelo_csv), orient="split")
     for col in ["fecha", "fecha_indice_dolar", "fecha_petroleo", "fecha_desde", "fecha_hasta"]:
         if col in df_modelo.columns:
             df_modelo[col] = pd.to_datetime(df_modelo[col], errors="coerce")

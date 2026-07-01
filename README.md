@@ -28,3 +28,8 @@ streamlit run app.py
 - Dólar-Colombia se usa solo como validación auxiliar gratuita.
 - La app no usa Yahoo Finance.
 - La TRM oficial es diaria; no es una cotización intradía.
+
+
+## Corrección V2
+
+Corrige lectura del modelo serializado con `StringIO` para evitar error `FileNotFoundError` en Streamlit Cloud.
